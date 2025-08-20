@@ -13,7 +13,7 @@ Core E-commerce
 
 Payment Integration
 - MPESA Daraja API - STK Push payments with callback handling
-- **Mock Payment System - For testing with placeholder credentials
+- Mock Payment System - For testing with placeholder credentials
 - Order Confirmation - Automated email notifications
 
 Wholesale Features
@@ -63,64 +63,26 @@ cp .env.example .env.local
 
 Update `.env.local` with your configuration:
 
-```env
-# Database
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/btt-shoes
-
-# NextAuth
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=your-secret-key-here
-
-# MPESA (optional - uses mock responses if not provided)
-MPESA_CONSUMER_KEY=your-consumer-key
-MPESA_CONSUMER_SECRET=your-consumer-secret
-MPESA_SHORTCODE=174379
-MPESA_PASSKEY=your-passkey
-MPESA_ENVIRONMENT=sandbox
-
-# Email (optional - uses mock responses if not provided)
-RESEND_API_KEY=your-resend-api-key
-FROM_EMAIL=noreply@bttshoes.com
-```
-3. Database Setup
-
+ Database Setup
 Seed the database with initial data:
-
 ```bash
 npm run seed
 ```
-
 This creates:
 - Admin user: `admin@bttshoes.com` / `admin123`
 - Customer user: `customer@example.com` / `customer123`
 - 15 products with complete data
 
-4. Development
-
+Development
 Start the development server:
-
-```bash
 npm run dev
-```
 
-Visit `http://localhost:3000` to see the application.
 
 Configuration
-
 MongoDB Setup
 
-1. Create a MongoDB Atlas account
-2. Create a new cluster
-3. Get your connection string
-4. Add it to `MONGODB_URI` in `.env.local`
 
 MPESA Integration
-
-1. Register for MPESA Daraja API
-2. Get your Consumer Key and Secret
-3. Configure your shortcode and passkey
-4. Set environment variables
-
 Note: The app works with mock MPESA responses if credentials aren't provided.
 
 Email Service
@@ -131,7 +93,6 @@ Email Service
 4. Set environment variables
 
 Note: The app uses mock email responses if API key isn't provided.
-
 Project Structure
 
 ```
@@ -171,63 +132,16 @@ Deployment
 
 Vercel Deployment
 
-1. Connect Repository
-   ```bash
-   # Install Vercel CLI
-   npm i -g vercel
-   
-   # Deploy
-   vercel
-   ```
-
-2. Environment Variables
-   
-   Set these in Vercel dashboard:
-   
-   ```
-   NEXTAUTH_URL=https://your-domain.vercel.app
-   NEXTAUTH_SECRET=your-production-secret
-   MONGODB_URI=your-mongodb-connection-string
-   MPESA_CONSUMER_KEY=your-mpesa-key
-   MPESA_CONSUMER_SECRET=your-mpesa-secret
-   MPESA_SHORTCODE=your-shortcode
-   MPESA_PASSKEY=your-passkey
-   MPESA_ENVIRONMENT=production
-   RESEND_API_KEY=your-resend-key
-   FROM_EMAIL=noreply@bttshoes.com
-   ```
-
-3. Domain Configuration
-   
-   For custom domain (bttshoes.com):
-   - Add domain in Vercel dashboard
-   - Update DNS records
-   - Update `NEXTAUTH_URL` to use custom domain
-
-Production Checklist
-
-- [ ] MongoDB Atlas production cluster configured
-- [ ] MPESA production credentials obtained
-- [ ] Resend.dev domain verified
-- [ ] Environment variables set in Vercel
-- [ ] Custom domain configured
-- [ ] SSL certificate active
-- [ ] Database seeded with production data
-
 
 MPESA Testing
 
 The app includes mock MPESA responses for testing:
-- Phone numbers ending in `1`: Invalid format error
-- Phone numbers ending in `2`: Insufficient funds error
-- Other numbers: Success response
 
 Email Testing
-
 Mock email responses are provided when `RESEND_API_KEY` is not set.
 
-Features Overview
 
+Features Overview
 User Roles
 
 Customer Features:
